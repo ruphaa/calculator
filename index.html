@@ -1,0 +1,202 @@
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="bg-primary">
+
+  <div class="container col-md-12 col-sm-12 mt-4 border-bottom-0">
+    <div class="card col-md-4 col-sm-12 offset-md-4">
+      <h3 class="card-header">Calculator</h3>
+      <div class="card-block">
+        <div class="calculator">
+
+            <div class="row mt-3">
+              <div class="input-group input1 col-md-6 col-sm-6">
+                <input type="text" class="form-control text-center font-weight-bold numeric" id="num1" required data-error-msg="Must enter a number">
+              </div>
+              <div class="input-group input2 col-md-6 col-sm-6">
+                <input type="text" class="form-control text-center font-weight-bold" id="num2">
+              </div>
+            </div>
+            <div class="error" style="color: Red; display: none">* Please enter a valid input</div>
+
+          <div class="row text-center mt-3">
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary w-75" id="add" onclick="submitCalc('add')" data-toggle="modal" data-placement="top" title="Add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary w-75" id="sub" onclick="submitCalc('sub')" data-toggle="modal" data-placement="top" title="Subtract">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary w-75" id="mult" onclick="submitCalc('mult')" data-toggle="modal" data-placement="top" title="Multiply">
+                <i class="fa fa-asterisk" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary w-75" id="divide" onclick="submitCalc('divide')" data-toggle="modal" data-placement="top" title="Divide">
+
+                    <svg width="17px" height="16px" viewBox="0 0 82 82" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                          <g id="mathematical-operations" fill-rule="nonzero" fill="white">
+                              <path d="M44.76,90.239 C38.03,90.239 32.567,84.785 32.567,78.046 C32.567,71.307 38.029,65.853 44.76,65.853 C51.499,65.853 56.953,71.307 56.953,78.046 C56.953,84.784 51.507,90.239 44.76,90.239 Z M44.76,0.824 C51.499,0.824 56.953,6.278 56.953,13.017 C56.953,19.756 51.499,25.21 44.76,25.21 C38.03,25.21 32.567,19.756 32.567,13.017 C32.568,6.279 38.03,0.824 44.76,0.824 Z M8.182,38.419 L81.339,38.419 C85.826,38.419 89.468,42.061 89.468,46.548 C89.468,51.035 85.826,54.677 81.339,54.677 L8.182,54.677 C3.695,54.677 0.053,51.035 0.053,46.548 C0.053,42.061 3.695,38.419 8.182,38.419 Z" id="Shape"></path>
+                          </g>
+
+                    </svg>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="input-group mt-3">
+            <span class="input-group-addon col-md-3 font-weight-bold font-italic" id="basic-addon3">Result</span>
+            <span class="result input-group-addon col-md-9 justify-content-center font-weight-bold font-italic" id="basic-addon3" id="result"></span>
+          </div>
+
+          <div class="card-footer mt-3 custom-card-footer">
+            <h4 class="text-center bg-primary custom-h4">History</h4>
+            <table class="table table-inverse bg-faded table-bordered table table-hover text-center">
+
+              <tbody class="history  table-primary" id="history">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You need to fill in the input boxes...
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+  <script>
+      $(document).ready(function() {
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        console.log('hello');
+
+        $.ajax({
+          type: 'POST',
+          url: '/display-results',
+
+          success: function(data){
+            displayhistory(data);
+          }
+        });
+        // jQuery.validator.setDefaults({
+        //   debug: true,
+        //   success: "valid"
+        // });
+        // $( "#myform" ).validate({
+        //   rules: {
+        //     field: {
+        //       required: true,
+        //       number: true
+        //     }
+        //   }
+        // });
+      });
+      function submitCalc(val){
+        var customValue = val;
+        var num1 = document.getElementById('num1').value;
+        var num2 = document.getElementById('num2').value;
+        if(!validateInput(num1) || !validateInput(num2)){
+          // if(!num1 || !num2){
+            $(".error").css("display", "block");
+          //}
+        }
+
+        else{
+          $(".error").css("display", "none");
+          var number = {"num1":num1,"num2":num2};
+
+          var url = '/'+customValue;
+          //console.log(url);
+          $.ajax({
+            type: 'POST',
+            url: url,
+            data: number,
+            success: function(data){
+                //console.log(data);
+                //console.log(data.response);
+                //console.log(data.history);
+
+                $('.result').text(data.response);
+                displayhistory(data.history);
+            }
+          });
+        }
+        }
+
+
+      function displayhistory(data){
+              console.log(Object.keys(data).length);
+              $('.history-content').remove();
+              var count = 0;
+              var array = $.unique(data);
+              var length = array.length;
+              for(let i = length-1; i >=0  ; i--){
+                count++;
+
+                var num1 = data[i].input1;
+                var num2 = data[i].input2;
+                var sign = data[i].operation;
+                var res = data[i].result;
+
+                var input1 = $("<td>",{"class":"input-1",text:num1});
+                var operation = $("<td>",{"class":"operation",text:sign});
+                var input2 = $("<td>",{"class":"input-2",text:num2});
+                var arrow = $("<td>",{"class":"arrow",text:"->"});
+                var answer = $("<td>",{"class":"answer",text:res});
+                var historycontent = $("<tr>",{id:"historycontent_"+i,"class":"history-content font-italic"});
+
+                historycontent.append(input1).append(operation).append(input2).append(arrow).append(answer);
+                $('.history').append(historycontent);
+                if(count == 10){
+                  break;
+                }
+              }
+
+      }
+      function validateInput(input) {
+        if(!input) {
+          return false;
+        }
+        if(!(input.charCodeAt(0) >= 48 && input.charCodeAt(0) <=57)) {
+          return false;
+        }
+        return true;
+      }
+  </script>
+
+</body>
+</html>

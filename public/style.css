@@ -1,0 +1,159 @@
+body {
+  background-color: lightgrey;
+}
+
+.calculator {
+	/*background: url(http://www.inkspilldesign.com/demo/wood-tile-background.jpg);*/
+	/*background-color: white;
+  /*color: white;*/
+	/*font-family: Tahoma;*/
+}
+/**{
+  text-decoration: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+body {
+	background: url(http://www.inkspilldesign.com/demo/wood-tile-background.jpg);
+	background-color: #424242;
+	font-family: Tahoma;
+}
+.container{
+  width: 100%;
+  margin-left: 400px;
+  align-items: center;
+
+}
+
+.custom-center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: 400px;
+}
+.calculator{
+  width: 400px;
+  border: 1px solid #232424;
+  background-color: #6d6d6d;
+  margin: 0 auto;
+  margin-top: 110px;
+}
+.input1,.input2{
+    width: 45%;
+    height: 50px;
+
+    float: left;
+    margin-top: 30px;
+
+}
+input#num1,input#num2{
+  width: 100%;
+  height: 50px;
+  font-size: xx-large;
+  text-align: center;
+  background-color: #2f3131;
+  border: 1px solid #878c8c;
+  color:white;
+}
+a {
+    color: #428BCA;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #2A6496;
+
+}
+.add,.sub,.mult,.divide{
+  width: 20%;
+  height: 50px;
+  background-color: #878c8c;
+  float: left;
+  margin-top: 30px;
+  margin-left: 23px;
+  text-align: center;
+  color: #edf2f2;
+  font-size: xx-large;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 1px;
+  border: 1px solid #232424;
+}
+.add:hover,.sub:hover,.mult:hover,.divide:hover{
+  text-decoration: none;
+}
+
+.result-label{
+  width: 45%;
+  height: 50px;
+  background-color: #878c8c;
+  float: left;
+  margin-left: 18px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 35px;
+  font-family: serif;
+  border: 1px solid #232424;
+}
+
+.result{
+  width: 45%;
+  height: 50px;
+  background-color: #878c8c;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: xx-large;
+  font-family: serif;
+  border: 1px solid #232424;
+}
+
+.history{
+  width: 95%;
+
+  float: left;
+}
+.heading{
+  text-align: center;
+  /*border: 1px solid lightslategrey;*/
+
+  /*margin-top: 20px;
+  font-size: x-large;
+  font-style: italic;
+}
+.history-content{
+  width: 95%;
+  align-items: center;
+  margin-left: 25px;
+  font-size: x-large;
+  font-style: italic;
+}
+.input-1,.input-2,.operation,.arrow,.answer{
+  margin-left: 5px;
+}
+.clear-fix{
+  clear: both;
+}*/
+
+.custom-card-footer{
+  padding: 0;
+}
+
+.custom-h4{
+  padding: 0.5rem;
+  margin: 0;
+}
+.slash-icon{
+  position: absolute;
+    content: "/";
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    left: 0;
+    top: 0;
+    text-shadow: 3px 0px 0px rgba(0, 0, 0, 1);
+    line-height: 32px;
+    left: 18%;
+    font-family: Arial;
+}
