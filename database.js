@@ -10,16 +10,6 @@ var mongooseQuery = (function(){
   });
   var Calculation = mongoose.model("Calculation",calculationSchema); // Here Calculation refers to the Collection in the mongoDB
 
-/*    var connectToDB = function(){
-      var MongoClient = require('mongodb').MongoClient;
-      var url = "mongodb://dev:passw0rd@ds125255.mlab.com:25255/mydatabase";
-        MongoClient.connect(url, function(err, database) {
-          if (err) reject();
-          db=database;
-          console.log('DB connection established');
-        });
-    };*/
-
     var insertIntoDB = function(num1,num2,value,result){
       return new Promise(function(resolve,reject){
 
@@ -53,8 +43,6 @@ var mongooseQuery = (function(){
     var retrieveFromDB = function(){
       return new Promise(function(resolve,reject){
         var array = {};
-        // var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://dev:passw0rd@ds125255.mlab.com:25255/mydatabase";
         console.log('Hey');
           var array = Calculation.find({},function(err,result){
             if(err) console.log('Oops');
