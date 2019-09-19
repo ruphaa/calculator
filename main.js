@@ -9,7 +9,7 @@ var path = require('path');
 var Promise = require('promise');
 var mongoose = require('mongoose');
 
- mongoose.connect("mongodb://dev:passw0rd@ds125255.mlab.com:25255/mydatabase",function(){
+ mongoose.connect("mongodb://<user-name>:<password><mlabs-uri>/<db-name>",function(){
      console.log('Connection is established');
  });
 
